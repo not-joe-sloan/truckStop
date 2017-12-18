@@ -15,6 +15,7 @@
 		154A18B61FE741C700F8A365 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154A18B41FE741C700F8A365 /* LaunchScreen.storyboard */; };
 		154A18C11FE741C800F8A365 /* truckAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A18C01FE741C800F8A365 /* truckAppTests.swift */; };
 		154A18CC1FE741C800F8A365 /* truckAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A18CB1FE741C800F8A365 /* truckAppUITests.swift */; };
+		47F8E197277127A764161EEC /* Pods_truckApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAED0E13C6CE598CC34CED9F /* Pods_truckApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,9 @@
 		154A18C71FE741C800F8A365 /* truckAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = truckAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		154A18CB1FE741C800F8A365 /* truckAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = truckAppUITests.swift; sourceTree = "<group>"; };
 		154A18CD1FE741C800F8A365 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A568008C383C15CB21BE673 /* Pods-truckApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-truckApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-truckApp/Pods-truckApp.debug.xcconfig"; sourceTree = "<group>"; };
+		B2448EAC142ED71D1BCADBE0 /* Pods-truckApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-truckApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-truckApp/Pods-truckApp.release.xcconfig"; sourceTree = "<group>"; };
+		BAED0E13C6CE598CC34CED9F /* Pods_truckApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_truckApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47F8E197277127A764161EEC /* Pods_truckApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +88,8 @@
 				154A18BF1FE741C800F8A365 /* truckAppTests */,
 				154A18CA1FE741C800F8A365 /* truckAppUITests */,
 				154A18A61FE741C700F8A365 /* Products */,
+				2801E5CFEBCAAA478D59B477 /* Pods */,
+				FB38AE57FC6E76A606512859 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +135,23 @@
 			path = truckAppUITests;
 			sourceTree = "<group>";
 		};
+		2801E5CFEBCAAA478D59B477 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2A568008C383C15CB21BE673 /* Pods-truckApp.debug.xcconfig */,
+				B2448EAC142ED71D1BCADBE0 /* Pods-truckApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FB38AE57FC6E76A606512859 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BAED0E13C6CE598CC34CED9F /* Pods_truckApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 154A18D01FE741C800F8A365 /* Build configuration list for PBXNativeTarget "truckApp" */;
 			buildPhases = (
+				D4D1E423F84D2CC17942A34F /* [CP] Check Pods Manifest.lock */,
 				154A18A11FE741C700F8A365 /* Sources */,
 				154A18A21FE741C700F8A365 /* Frameworks */,
 				154A18A31FE741C700F8A365 /* Resources */,
+				E454806F507561CD2FAE3626 /* [CP] Embed Pods Frameworks */,
+				4D1A1DED1CFE6B60A27598D7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -256,6 +283,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4D1A1DED1CFE6B60A27598D7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-truckApp/Pods-truckApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4D1E423F84D2CC17942A34F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-truckApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E454806F507561CD2FAE3626 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-truckApp/Pods-truckApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-truckApp/Pods-truckApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		154A18A11FE741C700F8A365 /* Sources */ = {
@@ -428,6 +511,7 @@
 		};
 		154A18D11FE741C800F8A365 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A568008C383C15CB21BE673 /* Pods-truckApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -442,6 +526,7 @@
 		};
 		154A18D21FE741C800F8A365 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2448EAC142ED71D1BCADBE0 /* Pods-truckApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
