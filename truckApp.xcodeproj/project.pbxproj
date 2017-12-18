@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		154A18A91FE741C700F8A365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A18A81FE741C700F8A365 /* AppDelegate.swift */; };
-		154A18AB1FE741C700F8A365 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A18AA1FE741C700F8A365 /* ViewController.swift */; };
+		154A18AB1FE741C700F8A365 /* nearbyTrucksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A18AA1FE741C700F8A365 /* nearbyTrucksViewController.swift */; };
 		154A18AE1FE741C700F8A365 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154A18AC1FE741C700F8A365 /* Main.storyboard */; };
 		154A18B11FE741C700F8A365 /* truckApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 154A18AF1FE741C700F8A365 /* truckApp.xcdatamodeld */; };
 		154A18B31FE741C700F8A365 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 154A18B21FE741C700F8A365 /* Assets.xcassets */; };
@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		154A18A51FE741C700F8A365 /* truckApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = truckApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		154A18A81FE741C700F8A365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		154A18AA1FE741C700F8A365 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		154A18AA1FE741C700F8A365 /* nearbyTrucksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nearbyTrucksViewController.swift; sourceTree = "<group>"; };
 		154A18AD1FE741C700F8A365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		154A18B01FE741C700F8A365 /* truckApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = truckApp.xcdatamodel; sourceTree = "<group>"; };
 		154A18B21FE741C700F8A365 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				154A18A81FE741C700F8A365 /* AppDelegate.swift */,
-				154A18AA1FE741C700F8A365 /* ViewController.swift */,
+				154A18AA1FE741C700F8A365 /* nearbyTrucksViewController.swift */,
 				154A18AC1FE741C700F8A365 /* Main.storyboard */,
 				154A18B21FE741C700F8A365 /* Assets.xcassets */,
 				154A18B41FE741C700F8A365 /* LaunchScreen.storyboard */,
@@ -345,7 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				154A18AB1FE741C700F8A365 /* ViewController.swift in Sources */,
+				154A18AB1FE741C700F8A365 /* nearbyTrucksViewController.swift in Sources */,
 				154A18A91FE741C700F8A365 /* AppDelegate.swift in Sources */,
 				154A18B11FE741C700F8A365 /* truckApp.xcdatamodeld in Sources */,
 			);
