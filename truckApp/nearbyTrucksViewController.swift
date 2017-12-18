@@ -18,7 +18,7 @@ class nearbyTrucksViewController: UIViewController, CLLocationManagerDelegate, M
     @IBOutlet var trucksTable: UITableView!
     
     //Variables
-    var locationManager = CLLocationManager()
+    var manager = CLLocationManager()
     
     
     override func viewDidLoad() {
@@ -26,17 +26,28 @@ class nearbyTrucksViewController: UIViewController, CLLocationManagerDelegate, M
         // Do any additional setup after loading the view, typically from a nib.
         
         //SET UP THE LOCATION MANAGER
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
         mapView.showsUserLocation = true
+
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        //set map to user's location.
+        let location = CLLocationCoordinate2DMake(locations[0].coordinate.latitude, locations[0].coordinate.longitude)
+        let span = MKCoordinateSpanMake(0.01, 0.01)
+        let region = MKCoordinateRegion(center: location, span: span)
+        self.mapView.setRegion(region, animated: true)
+        
     }
     
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

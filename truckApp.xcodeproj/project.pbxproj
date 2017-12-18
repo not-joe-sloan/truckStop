@@ -15,6 +15,11 @@
 		154A18B61FE741C700F8A365 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154A18B41FE741C700F8A365 /* LaunchScreen.storyboard */; };
 		154A18C11FE741C800F8A365 /* truckAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A18C01FE741C800F8A365 /* truckAppTests.swift */; };
 		154A18CC1FE741C800F8A365 /* truckAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A18CB1FE741C800F8A365 /* truckAppUITests.swift */; };
+		154A18DA1FE7540600F8A365 /* Truck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A18D91FE7540600F8A365 /* Truck.swift */; };
+		154A18DC1FE7540C00F8A365 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A18DB1FE7540C00F8A365 /* User.swift */; };
+		154A18DE1FE75B7800F8A365 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A18DD1FE75B7800F8A365 /* loginViewController.swift */; };
+		15AD40991FE76ED300A9C78A /* truckLoginPartOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD40981FE76ED300A9C78A /* truckLoginPartOne.swift */; };
+		15AD409B1FE7714300A9C78A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD409A1FE7714300A9C78A /* Utils.swift */; };
 		47F8E197277127A764161EEC /* Pods_truckApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAED0E13C6CE598CC34CED9F /* Pods_truckApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +55,11 @@
 		154A18C71FE741C800F8A365 /* truckAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = truckAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		154A18CB1FE741C800F8A365 /* truckAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = truckAppUITests.swift; sourceTree = "<group>"; };
 		154A18CD1FE741C800F8A365 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		154A18D91FE7540600F8A365 /* Truck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Truck.swift; sourceTree = "<group>"; };
+		154A18DB1FE7540C00F8A365 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		154A18DD1FE75B7800F8A365 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		15AD40981FE76ED300A9C78A /* truckLoginPartOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = truckLoginPartOne.swift; sourceTree = "<group>"; };
+		15AD409A1FE7714300A9C78A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		2A568008C383C15CB21BE673 /* Pods-truckApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-truckApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-truckApp/Pods-truckApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B2448EAC142ED71D1BCADBE0 /* Pods-truckApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-truckApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-truckApp/Pods-truckApp.release.xcconfig"; sourceTree = "<group>"; };
 		BAED0E13C6CE598CC34CED9F /* Pods_truckApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_truckApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +118,12 @@
 			children = (
 				154A18A81FE741C700F8A365 /* AppDelegate.swift */,
 				154A18AA1FE741C700F8A365 /* nearbyTrucksViewController.swift */,
+				154A18D91FE7540600F8A365 /* Truck.swift */,
+				154A18DB1FE7540C00F8A365 /* User.swift */,
 				154A18AC1FE741C700F8A365 /* Main.storyboard */,
+				15AD40981FE76ED300A9C78A /* truckLoginPartOne.swift */,
+				154A18DD1FE75B7800F8A365 /* loginViewController.swift */,
+				15AD409A1FE7714300A9C78A /* Utils.swift */,
 				154A18B21FE741C700F8A365 /* Assets.xcassets */,
 				154A18B41FE741C700F8A365 /* LaunchScreen.storyboard */,
 				154A18B71FE741C700F8A365 /* Info.plist */,
@@ -347,7 +362,12 @@
 			files = (
 				154A18AB1FE741C700F8A365 /* nearbyTrucksViewController.swift in Sources */,
 				154A18A91FE741C700F8A365 /* AppDelegate.swift in Sources */,
+				154A18DE1FE75B7800F8A365 /* loginViewController.swift in Sources */,
 				154A18B11FE741C700F8A365 /* truckApp.xcdatamodeld in Sources */,
+				154A18DC1FE7540C00F8A365 /* User.swift in Sources */,
+				15AD40991FE76ED300A9C78A /* truckLoginPartOne.swift in Sources */,
+				154A18DA1FE7540600F8A365 /* Truck.swift in Sources */,
+				15AD409B1FE7714300A9C78A /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
