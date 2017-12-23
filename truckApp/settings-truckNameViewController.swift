@@ -9,14 +9,13 @@
 import UIKit
 import Parse
 
-class settings_nameViewController: UIViewController {
+class settings_truckNameViewController: UIViewController {
 
 
     @IBAction func savePressed(_ sender: Any) {
         
         let name = nameField.text
-        
-        
+
         let query = PFQuery(className: "Truck")
         query.whereKey("owner", equalTo: PFUser.current()?.value(forKey: "objectId"))
 
@@ -27,15 +26,14 @@ class settings_nameViewController: UIViewController {
                 
                 truck?.saveInBackground(block: { (success, error) in
                     if success{
-                        print("Success!")
+                        
+                        Utils.showAlert(vc: self, title: "Saved", message: "Your save was a success!")
                     }else{
                         Utils.showAlert(vc: self, title: "Error", message: error!.localizedDescription)
                     }
                 })
-                
             }
         })
-        
     }
     
     @IBOutlet var nameField: UITextField!

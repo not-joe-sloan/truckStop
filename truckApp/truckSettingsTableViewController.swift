@@ -9,6 +9,8 @@
 import UIKit
 
 class truckSettingsTableViewController: UITableViewController {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
