@@ -28,7 +28,7 @@ class menu_truckMenuTableViewController: UITableViewController {
         super.viewDidLoad()
         
         let itemsQuery = PFQuery(className: "MenuItem")
-        itemsQuery.whereKey("author", equalTo: PFUser.current()?.value(forKey: "truck"))
+        itemsQuery.whereKey("author", equalTo: PFUser.current()!.value(forKey: "truck")!)
         
         itemsQuery.findObjectsInBackground { (objects, error) in
             if error == nil {
@@ -45,7 +45,7 @@ class menu_truckMenuTableViewController: UITableViewController {
                 }
                 self.tableView.reloadData()
             }else{
-                Utils.showAlert(vc: self, title: "Error loading items", message: error!.localizedDescription as! String)
+                Utils.showAlert(vc: self, title: "Error loading items", message: error!.localizedDescription)
             }
         }
 

@@ -76,9 +76,9 @@ class loginViewController: UIViewController {
                         user["truck"] = truck.objectId
                         user.saveInBackground(block: { (suc, err) in
                             if suc{
-                                print("\(user["name"]) owns \(truck.objectId)")
+                                print("\(user["name"]) owns \(String(describing: truck.objectId))")
                             }else{
-                                print(err?.localizedDescription)
+                                print(err!.localizedDescription)
                             }
                         })
                         

@@ -19,6 +19,9 @@
 		154A18DC1FE7540C00F8A365 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A18DB1FE7540C00F8A365 /* User.swift */; };
 		154A18DE1FE75B7800F8A365 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A18DD1FE75B7800F8A365 /* loginViewController.swift */; };
 		154A4DBF1FF30F4000CAD649 /* menu-truckMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A4DBE1FF30F4000CAD649 /* menu-truckMenuTableViewController.swift */; };
+		154A4DC31FF3225F00CAD649 /* activity-activityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A4DC21FF3225F00CAD649 /* activity-activityViewController.swift */; };
+		154A4DC51FF33BC300CAD649 /* activity-timeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A4DC41FF33BC300CAD649 /* activity-timeCell.swift */; };
+		154A4DC71FF3417200CAD649 /* activity-setClosingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A4DC61FF3417200CAD649 /* activity-setClosingViewController.swift */; };
 		157DACA11FEF17F00021312B /* menu-addItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DACA01FEF17F00021312B /* menu-addItemViewController.swift */; };
 		157DACE21FF02F330021312B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DACE11FF02F330021312B /* Constants.swift */; };
 		1586907C1FE9CC87008E6686 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1586907B1FE9CC87008E6686 /* Settings.bundle */; };
@@ -81,6 +84,9 @@
 		154A18DB1FE7540C00F8A365 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		154A18DD1FE75B7800F8A365 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		154A4DBE1FF30F4000CAD649 /* menu-truckMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "menu-truckMenuTableViewController.swift"; sourceTree = "<group>"; };
+		154A4DC21FF3225F00CAD649 /* activity-activityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "activity-activityViewController.swift"; sourceTree = "<group>"; };
+		154A4DC41FF33BC300CAD649 /* activity-timeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "activity-timeCell.swift"; sourceTree = "<group>"; };
+		154A4DC61FF3417200CAD649 /* activity-setClosingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "activity-setClosingViewController.swift"; sourceTree = "<group>"; };
 		157DACA01FEF17F00021312B /* menu-addItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "menu-addItemViewController.swift"; sourceTree = "<group>"; };
 		157DACE11FF02F330021312B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1586907B1FE9CC87008E6686 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -161,20 +167,23 @@
 			isa = PBXGroup;
 			children = (
 				154A18AC1FE741C700F8A365 /* Main.storyboard */,
+				154A4DC41FF33BC300CAD649 /* activity-timeCell.swift */,
+				154A4DC61FF3417200CAD649 /* activity-setClosingViewController.swift */,
+				157DACE11FF02F330021312B /* Constants.swift */,
+				154A4DC21FF3225F00CAD649 /* activity-activityViewController.swift */,
+				154A18DD1FE75B7800F8A365 /* loginViewController.swift */,
 				157DACA01FEF17F00021312B /* menu-addItemViewController.swift */,
 				154A4DBE1FF30F4000CAD649 /* menu-truckMenuTableViewController.swift */,
-				154A18DD1FE75B7800F8A365 /* loginViewController.swift */,
-				154A18A81FE741C700F8A365 /* AppDelegate.swift */,
 				154A18AA1FE741C700F8A365 /* nearbyTrucksViewController.swift */,
-				154A18D91FE7540600F8A365 /* Truck.swift */,
-				154A18DB1FE7540C00F8A365 /* User.swift */,
-				157DACE11FF02F330021312B /* Constants.swift */,
-				158690851FE9F593008E6686 /* truckSettingsTableViewController.swift */,
 				158690871FEA038F008E6686 /* settings-truckNameViewController.swift */,
 				1589AFC01FEE177900BF74D4 /* settings-truckDescriptionViewController.swift */,
 				1589AFBE1FEE175000BF74D4 /* settings-truckEmailViewController.swift */,
 				1589AFBC1FEE174200BF74D4 /* settings-truckPhoneViewController.swift */,
 				1589AFBA1FEE172E00BF74D4 /* settings-truckWebsiteViewController.swift */,
+				158690851FE9F593008E6686 /* truckSettingsTableViewController.swift */,
+				154A18D91FE7540600F8A365 /* Truck.swift */,
+				154A18DB1FE7540C00F8A365 /* User.swift */,
+				154A18A81FE741C700F8A365 /* AppDelegate.swift */,
 				1586907B1FE9CC87008E6686 /* Settings.bundle */,
 				15AD40981FE76ED300A9C78A /* truckLoginPartOne.swift */,
 				15AD409A1FE7714300A9C78A /* Utils.swift */,
@@ -465,12 +474,15 @@
 			files = (
 				1589AFBF1FEE175000BF74D4 /* settings-truckEmailViewController.swift in Sources */,
 				154A18AB1FE741C700F8A365 /* nearbyTrucksViewController.swift in Sources */,
+				154A4DC71FF3417200CAD649 /* activity-setClosingViewController.swift in Sources */,
 				157DACA11FEF17F00021312B /* menu-addItemViewController.swift in Sources */,
 				154A18A91FE741C700F8A365 /* AppDelegate.swift in Sources */,
 				154A18DE1FE75B7800F8A365 /* loginViewController.swift in Sources */,
 				154A18B11FE741C700F8A365 /* truckApp.xcdatamodeld in Sources */,
+				154A4DC51FF33BC300CAD649 /* activity-timeCell.swift in Sources */,
 				158690881FEA038F008E6686 /* settings-truckNameViewController.swift in Sources */,
 				157DACE21FF02F330021312B /* Constants.swift in Sources */,
+				154A4DC31FF3225F00CAD649 /* activity-activityViewController.swift in Sources */,
 				1589AFC11FEE177900BF74D4 /* settings-truckDescriptionViewController.swift in Sources */,
 				154A4DBF1FF30F4000CAD649 /* menu-truckMenuTableViewController.swift in Sources */,
 				154A18DC1FE7540C00F8A365 /* User.swift in Sources */,
