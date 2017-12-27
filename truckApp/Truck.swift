@@ -71,7 +71,7 @@ class Truck: NSObject {
             static let desserts = categories(rawValue: 4)
             static let specials = categories(rawValue: 5)
         }
-        var categories = menuItem.categories()
+        var category = menuItem.categories()
         
         struct allergyInfo {
             var peanuts = false
@@ -107,8 +107,6 @@ class Truck: NSObject {
         newItem.allergyInfo.corn = true
         
         //Add drinks and desserts to categories
-        newItem.categories.insert(.drinks)
-        newItem.categories.insert(.desserts)
         
         //Add the new menu item
         menu.append(newItem)

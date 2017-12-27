@@ -38,6 +38,7 @@ class loginViewController: UIViewController {
         }
         
     }
+    
     @IBAction func truckSignupPressed(_ sender: Any) {
         if nameField.text != "" && nameField.text != nil {
             if passField.text != "" && passField.text != nil {
@@ -46,11 +47,8 @@ class loginViewController: UIViewController {
                 user.username = nameField.text
                 user.password = passField.text
                 user["isOwner"] = true
-                user["truck"] = String()
                 user["dateJoined"] = Date()
                 user["lastLogin"] = Date()
-                
-
                 
                 user.signUpInBackground(block: { (success, error) in
                     if success {
@@ -62,21 +60,35 @@ class loginViewController: UIViewController {
                 
                 
                 
-                
                 let truck = PFObject(className: "Truck")
                 truck["owner"] = PFUser.current()?.value(forKey: "objectId")
                 truck["dateJoined"] = Date()
                 truck["lastLogin"] = Date()
                 truck["isServing"] = false
                 
+                
+                
                 truck.saveInBackground(block: { (success, error) in
                     if success{
                         self.performSegue(withIdentifier: "truckOwnerLogin", sender: nil)
                         print("Success!")
+                        
+                        user["truck"] = truck.objectId
+                        user.saveInBackground(block: { (suc, err) in
+                            if suc{
+                                print("\(user["name"]) owns \(truck.objectId)")
+                            }else{
+                                print(err?.localizedDescription)
+                            }
+                        })
+                        
                     }else{
                         Utils.showAlert(vc: self, title: "Error", message: error!.localizedDescription)
                     }
                 })
+                
+                
+                
             }
         }
     }
@@ -85,6 +97,12 @@ class loginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        if PFUser.current() != nil
+        {
+            self.performSegue(withIdentifier: "truckOwnerLogin", sender: self)
+        }
+        
         // Do any additional setup after loading the view.
     }
 

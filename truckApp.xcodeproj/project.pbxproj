@@ -18,7 +18,9 @@
 		154A18DA1FE7540600F8A365 /* Truck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A18D91FE7540600F8A365 /* Truck.swift */; };
 		154A18DC1FE7540C00F8A365 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A18DB1FE7540C00F8A365 /* User.swift */; };
 		154A18DE1FE75B7800F8A365 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A18DD1FE75B7800F8A365 /* loginViewController.swift */; };
-		157760231FEE287B005BED66 /* addMenuItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157760221FEE287B005BED66 /* addMenuItemViewController.swift */; };
+		154A4DBF1FF30F4000CAD649 /* menu-truckMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154A4DBE1FF30F4000CAD649 /* menu-truckMenuTableViewController.swift */; };
+		157DACA11FEF17F00021312B /* menu-addItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DACA01FEF17F00021312B /* menu-addItemViewController.swift */; };
+		157DACE21FF02F330021312B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157DACE11FF02F330021312B /* Constants.swift */; };
 		1586907C1FE9CC87008E6686 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1586907B1FE9CC87008E6686 /* Settings.bundle */; };
 		158690821FE9F2E1008E6686 /* facebook-icon-round.png in Resources */ = {isa = PBXBuildFile; fileRef = 1586907F1FE9F2E0008E6686 /* facebook-icon-round.png */; };
 		158690831FE9F2E1008E6686 /* insta-icon-round.png in Resources */ = {isa = PBXBuildFile; fileRef = 158690801FE9F2E1008E6686 /* insta-icon-round.png */; };
@@ -78,7 +80,9 @@
 		154A18D91FE7540600F8A365 /* Truck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Truck.swift; sourceTree = "<group>"; };
 		154A18DB1FE7540C00F8A365 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		154A18DD1FE75B7800F8A365 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
-		157760221FEE287B005BED66 /* addMenuItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addMenuItemViewController.swift; sourceTree = "<group>"; };
+		154A4DBE1FF30F4000CAD649 /* menu-truckMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "menu-truckMenuTableViewController.swift"; sourceTree = "<group>"; };
+		157DACA01FEF17F00021312B /* menu-addItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "menu-addItemViewController.swift"; sourceTree = "<group>"; };
+		157DACE11FF02F330021312B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1586907B1FE9CC87008E6686 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		1586907F1FE9F2E0008E6686 /* facebook-icon-round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-icon-round.png"; sourceTree = "<group>"; };
 		158690801FE9F2E1008E6686 /* insta-icon-round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "insta-icon-round.png"; sourceTree = "<group>"; };
@@ -156,12 +160,15 @@
 		154A18A71FE741C700F8A365 /* truckApp */ = {
 			isa = PBXGroup;
 			children = (
-				157760221FEE287B005BED66 /* addMenuItemViewController.swift */,
+				154A18AC1FE741C700F8A365 /* Main.storyboard */,
+				157DACA01FEF17F00021312B /* menu-addItemViewController.swift */,
+				154A4DBE1FF30F4000CAD649 /* menu-truckMenuTableViewController.swift */,
+				154A18DD1FE75B7800F8A365 /* loginViewController.swift */,
 				154A18A81FE741C700F8A365 /* AppDelegate.swift */,
 				154A18AA1FE741C700F8A365 /* nearbyTrucksViewController.swift */,
 				154A18D91FE7540600F8A365 /* Truck.swift */,
 				154A18DB1FE7540C00F8A365 /* User.swift */,
-				154A18AC1FE741C700F8A365 /* Main.storyboard */,
+				157DACE11FF02F330021312B /* Constants.swift */,
 				158690851FE9F593008E6686 /* truckSettingsTableViewController.swift */,
 				158690871FEA038F008E6686 /* settings-truckNameViewController.swift */,
 				1589AFC01FEE177900BF74D4 /* settings-truckDescriptionViewController.swift */,
@@ -170,7 +177,6 @@
 				1589AFBA1FEE172E00BF74D4 /* settings-truckWebsiteViewController.swift */,
 				1586907B1FE9CC87008E6686 /* Settings.bundle */,
 				15AD40981FE76ED300A9C78A /* truckLoginPartOne.swift */,
-				154A18DD1FE75B7800F8A365 /* loginViewController.swift */,
 				15AD409A1FE7714300A9C78A /* Utils.swift */,
 				154A18B21FE741C700F8A365 /* Assets.xcassets */,
 				154A18B41FE741C700F8A365 /* LaunchScreen.storyboard */,
@@ -459,12 +465,14 @@
 			files = (
 				1589AFBF1FEE175000BF74D4 /* settings-truckEmailViewController.swift in Sources */,
 				154A18AB1FE741C700F8A365 /* nearbyTrucksViewController.swift in Sources */,
+				157DACA11FEF17F00021312B /* menu-addItemViewController.swift in Sources */,
 				154A18A91FE741C700F8A365 /* AppDelegate.swift in Sources */,
-				157760231FEE287B005BED66 /* addMenuItemViewController.swift in Sources */,
 				154A18DE1FE75B7800F8A365 /* loginViewController.swift in Sources */,
 				154A18B11FE741C700F8A365 /* truckApp.xcdatamodeld in Sources */,
 				158690881FEA038F008E6686 /* settings-truckNameViewController.swift in Sources */,
+				157DACE21FF02F330021312B /* Constants.swift in Sources */,
 				1589AFC11FEE177900BF74D4 /* settings-truckDescriptionViewController.swift in Sources */,
+				154A4DBF1FF30F4000CAD649 /* menu-truckMenuTableViewController.swift in Sources */,
 				154A18DC1FE7540C00F8A365 /* User.swift in Sources */,
 				15AD40991FE76ED300A9C78A /* truckLoginPartOne.swift in Sources */,
 				158690861FE9F593008E6686 /* truckSettingsTableViewController.swift in Sources */,
