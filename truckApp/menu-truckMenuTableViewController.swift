@@ -8,16 +8,18 @@
 
 import UIKit
 import Parse
+import CoreData
 
 class menu_truckMenuTableViewController: UITableViewController {
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
     
     var itemNames = [String]()
     var itemPrices = [String]()
     var itemDescriptions = [String]()
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
+    var items: [NSManagedObject] = []
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         viewController.viewDidAppear(true)
@@ -26,6 +28,21 @@ class menu_truckMenuTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Pull up the PersistentContainer from the appDelegate to start working with the NSManagedObjectContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //Start a fetch request by setting its entity property, which declares the type of entity the fetch will deal with.
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "MenuItem")
+        
+        //You hand the fetchRequest over to the ManagedObjectContext to implement it into a fetch.  a Fetch will return an array of objects that meet the criteria specified in the fetch request.
+        
+        do {items = try managedContext.fetch(fetchRequest)
+            print(items)
+        }catch let error as NSError {
+            Utils.showAlert(vc: self, title: "Error", message: error.localizedDescription)
+        }
         
         let itemsQuery = PFQuery(className: "MenuItem")
         itemsQuery.whereKey("author", equalTo: PFUser.current()!.value(forKey: "truck")!)
@@ -71,14 +88,16 @@ class menu_truckMenuTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return itemNames.count
+        return items.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = itemNames[indexPath.row]
+        let item = items[indexPath.row]
+
+        cell.textLabel?.text = item.value(forKeyPath: "name") as? String
         
         return cell
     }

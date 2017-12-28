@@ -7,10 +7,11 @@
 
 import UIKit
 import Parse
+import CoreData
 
 class menu_addItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    // Protocol Conformations
+// MARK: Protocol Conformations
     // The number of columns of data
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -28,52 +29,66 @@ class menu_addItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         return pickerData[row]
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
-    {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCategory = pickerData[row] as String
-
+        
     }
     
+    
+    
+    
+    
+    
+    
+    
+    //Custom Variables
+    var pickerData: [String] = [String]()
+    var selectedAllergyItems = [Int]()
+    var customAllergyItems = [String]()
+    var selectedCategory = String()
+    var items: [NSManagedObject] = []
+    
+    //Custom Functions
+    func save(name: String){
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        
+        
+        //Set up the managed context, sort of like a "git add" type action.  Sets the whole transfer up for queueing
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        //Create a new managedObject, and essentially create a link between it and the managedObjectContext, for later when the managedContext needs to work with it???
+        let entity = NSEntityDescription.entity(forEntityName: "MenuItem", in: managedContext)
+        let item = NSManagedObject(entity: entity!, insertInto: managedContext)
+        
+        //Here you set the values for the menuitem
+        item.setValue(name, forKey: "name")
+        
+        do {
+            try managedContext.save()
+            items.append(item)
+            print(item.value(forKeyPath: "name"))
+        } catch let error as NSError{
+            Utils.showAlert(vc: self, title: "Error", message: "Could not save to CoreData")
+        }
+    }
+    
+//MARK: OUTLETS
+    @IBOutlet var itemNameField: UITextField!
+    @IBOutlet var itemPriceField: UITextField!
+    @IBOutlet var itemDescriptionField: UITextView!
+    @IBOutlet var picker: UIPickerView!
+
+//MARK: ACTIONS
+
+    //Cancel Adding
     @IBAction func cancelAddingPressed(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func savePressed(_ sender: Any) {
-        
-        
-        
-    }
-    @IBOutlet var picker: UIPickerView!
-    var pickerData: [String] = [String]()
-    
-    var selectedAllergyItems = [Int]()
-    var customAllergyItems = [String]()
-    var selectedCategory = String()
-    
-    @IBOutlet var itemNameField: UITextField!
-    @IBOutlet var itemPriceField: UITextField!
-    @IBOutlet var itemDescriptionField: UITextView!
-    
-    @IBAction func saveWasPressed(_ sender: Any) {
-        
-        let item = PFObject(className: "MenuItem")
-        item["author"] = PFUser.current()?.value(forKey: "truck")
-        item["name"] = itemNameField.text
-        item["price"] = itemPriceField.text
-        item["description"] = itemDescriptionField.text
-        item["category"] = selectedCategory
-        item["allergyInfo"] = selectedAllergyItems
-        
-        item.saveInBackground(block: { (success, error) in
-            if success{
-                print("Success!")
-                self.dismiss(animated: true, completion: nil)
-            }else{
-                Utils.showAlert(vc: self, title: "Error", message: error!.localizedDescription)
-            }
-        })
-    }
-    
+    //Logging Allergy Info
     @IBAction func logAllergyInfo(_ sender: Any) {
         let button = sender as! UIButton
         print(button.tag)
@@ -119,7 +134,35 @@ class menu_addItemViewController: UIViewController, UIPickerViewDelegate, UIPick
             })
         }
     }
+    
+    //
+    //
+//MARK: Saving a menu item
+    @IBAction func saveWasPressed(_ sender: Any) {
+        
 
+        self.save(name: self.itemNameField.text!)
+
+ 
+        let item = PFObject(className: "MenuItem")
+        item["author"] = PFUser.current()?.value(forKey: "truck")
+        item["name"] = itemNameField.text
+        item["price"] = itemPriceField.text
+        item["description"] = itemDescriptionField.text
+        item["category"] = selectedCategory
+        item["allergyInfo"] = selectedAllergyItems
+
+        item.saveInBackground(block: { (success, error) in
+            if success{
+                print("Success!")
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                Utils.showAlert(vc: self, title: "Error", message: error!.localizedDescription)
+            }
+        })
+    }
+
+//MARK: BACKGROUND SWIFT STUFF
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,7 +189,7 @@ class menu_addItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     
     /*
-     // MARK: - Navigation
+// MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
