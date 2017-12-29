@@ -12,10 +12,13 @@ import CoreData
 
 class menu_truckMenuTableViewController: UITableViewController {
     
-    override func viewDidAppear(_ animated: Bool) {
+  
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         tableView.reloadData()
     }
     
+    @IBOutlet var menuTable: UITableView!
     var itemNames = [String]()
     var itemPrices = [String]()
     var itemDescriptions = [String]()
@@ -93,6 +96,7 @@ class menu_truckMenuTableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         let item = items[indexPath.row]

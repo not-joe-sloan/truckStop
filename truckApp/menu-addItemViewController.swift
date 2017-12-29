@@ -23,7 +23,6 @@ class menu_addItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         return pickerData.count
     }
     
-    
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
@@ -49,7 +48,7 @@ class menu_addItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     var items: [NSManagedObject] = []
     
     //Custom Functions
-    func save(name: String){
+    func save(){
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return
@@ -64,16 +63,40 @@ class menu_addItemViewController: UIViewController, UIPickerViewDelegate, UIPick
         let item = NSManagedObject(entity: entity!, insertInto: managedContext)
         
         //Here you set the values for the menuitem
-        item.setValue(name, forKey: "name")
+        item.setValue(itemNameField.text, forKey: "name")
+        item.setValue(itemDescriptionField.text, forKey: "itemDescription")
+        item.setValue(itemPriceField.text, forKey: "price")
+        item.setValue(PFUser.current()?.value(forKey: "truck"), forKey: "author")
+        item.setValue(selectedAllergyItems, forKey: "allergyInfo")
+        item.setValue(selectedCategory, forKey: "category")
         
         do {
             try managedContext.save()
             items.append(item)
-            print(item.value(forKeyPath: "name"))
+            print(item.value(forKeyPath: "name"), item.value(forKeyPath: "itemDescription"))
         } catch let error as NSError{
             Utils.showAlert(vc: self, title: "Error", message: "Could not save to CoreData")
         }
     }
+    func parseSave(){
+        let item = PFObject(className: "MenuItem")
+        item["author"] = PFUser.current()?.value(forKey: "truck")
+        item["name"] = itemNameField.text
+        item["price"] = itemPriceField.text
+        item["description"] = itemDescriptionField.text
+        item["category"] = selectedCategory
+        item["allergyInfo"] = selectedAllergyItems
+        
+        item.saveInBackground(block: { (success, error) in
+            if success{
+                print("Success!")
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                Utils.showAlert(vc: self, title: "Error", message: error!.localizedDescription)
+            }
+        })
+    }
+    
     
 //MARK: OUTLETS
     @IBOutlet var itemNameField: UITextField!
@@ -141,25 +164,9 @@ class menu_addItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBAction func saveWasPressed(_ sender: Any) {
         
 
-        self.save(name: self.itemNameField.text!)
-
- 
-        let item = PFObject(className: "MenuItem")
-        item["author"] = PFUser.current()?.value(forKey: "truck")
-        item["name"] = itemNameField.text
-        item["price"] = itemPriceField.text
-        item["description"] = itemDescriptionField.text
-        item["category"] = selectedCategory
-        item["allergyInfo"] = selectedAllergyItems
-
-        item.saveInBackground(block: { (success, error) in
-            if success{
-                print("Success!")
-                self.dismiss(animated: true, completion: nil)
-            }else{
-                Utils.showAlert(vc: self, title: "Error", message: error!.localizedDescription)
-            }
-        })
+        self.save()
+        self.parseSave()
+        
     }
 
 //MARK: BACKGROUND SWIFT STUFF

@@ -43,7 +43,7 @@ class activity_activityViewController: UIViewController, MKMapViewDelegate, UITa
             isActive = true
         }else{
             isActive = false
-            activityStatusButton.title = "Activate"
+            activityStatusButton.title = "Start Serving"
             self.title = "Inactive"
             self.tabBarController?.tabBar.items![0].title = "Inactive"
             self.tabBarController?.tabBar.items![0].badgeColor = globalConstants.mainOrange

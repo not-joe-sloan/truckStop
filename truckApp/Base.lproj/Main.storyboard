@@ -306,7 +306,7 @@
                         <viewLayoutGuide key="safeArea" id="Bwh-Y7-xgm"/>
                     </view>
                     <navigationItem key="navigationItem" title="Inactive" id="Yle-vr-lv0">
-                        <barButtonItem key="rightBarButtonItem" title="Activate" style="done" id="Drc-G4-ejN">
+                        <barButtonItem key="rightBarButtonItem" title="Start Serving" style="done" id="Drc-G4-ejN">
                             <color key="tintColor" red="0.34324115039999997" green="0.25371382069999998" blue="0.13246091739999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="changeActivityStatus:" destination="Fvf-ja-5hh" id="VFe-Hx-UCw"/>
@@ -438,6 +438,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="menuTable" destination="Hbo-3o-wcO" id="nkz-XN-jhF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0HZ-f5-hyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1333,36 +1336,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="YbB-is-90A">
-                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
-                                <color key="backgroundColor" red="0.99927943939999997" green="0.67809921500000003" blue="0.079001463950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="barTintColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                                <connections>
-                                    <outlet property="delegate" destination="ViD-fg-RkL" id="npW-Nm-cuy"/>
-                                </connections>
-                            </searchBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AYt-au-Fii">
-                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FH4-2J-X2i">
+                                <rect key="frame" x="0.0" y="109" width="375" height="558"/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TaO-ku-oAw">
-                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="109" width="375" height="558"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Zs5-1i-q5c" style="IBUITableViewCellStyleDefault" id="kjo-9w-z15">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" textLabel="7eF-a2-cd2" rowHeight="46" style="IBUITableViewCellStyleDefault" id="kjo-9w-z15">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kjo-9w-z15" id="mqc-wN-J1S">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zs5-1i-q5c">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7eF-a2-cd2">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="45.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1370,27 +1359,58 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="40n-92-2Qv">
+                                <rect key="frame" x="138" y="71" width="224" height="31"/>
+                                <color key="minimumTrackTintColor" red="0.52898732386938774" green="0.41692598056394559" blue="0.13246091739999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="maximumTrackTintColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="ViD-fg-RkL" eventType="valueChanged" id="lwP-jv-YHG"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DaL-Wn-5FJ">
+                                <rect key="frame" x="1" y="72" width="120" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="5KH-SV-Jkq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                <state key="normal" title="WITHIN 5 MILES">
+                                    <color key="titleColor" red="0.34324115039999997" green="0.25371382069999998" blue="0.13246091739999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchWasPressed:" destination="ViD-fg-RkL" eventType="touchUpInside" id="6cb-ao-9MS"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.99927943939999997" green="0.67809921500000003" blue="0.079001463950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="AYt-au-Fii" firstAttribute="top" secondItem="YbB-is-90A" secondAttribute="bottom" id="0NC-Do-kGr"/>
-                            <constraint firstItem="YbB-is-90A" firstAttribute="leading" secondItem="YuZ-55-GGL" secondAttribute="leading" id="1AS-rD-mN8"/>
-                            <constraint firstItem="YbB-is-90A" firstAttribute="top" secondItem="YuZ-55-GGL" secondAttribute="top" id="I5U-Ql-dDa"/>
-                            <constraint firstItem="TaO-ku-oAw" firstAttribute="trailing" secondItem="YuZ-55-GGL" secondAttribute="trailing" id="Qf2-Ln-cxc"/>
-                            <constraint firstItem="YbB-is-90A" firstAttribute="trailing" secondItem="YuZ-55-GGL" secondAttribute="trailing" id="XWr-J5-J8B"/>
-                            <constraint firstItem="AYt-au-Fii" firstAttribute="leading" secondItem="YuZ-55-GGL" secondAttribute="leading" id="ebu-u5-sgk"/>
-                            <constraint firstItem="TaO-ku-oAw" firstAttribute="top" secondItem="YbB-is-90A" secondAttribute="bottom" id="fWn-cJ-cfe"/>
-                            <constraint firstItem="TaO-ku-oAw" firstAttribute="leading" secondItem="YuZ-55-GGL" secondAttribute="leading" id="gZu-MD-aJ9"/>
-                            <constraint firstAttribute="bottom" secondItem="AYt-au-Fii" secondAttribute="bottom" id="rC1-8c-Yxn"/>
-                            <constraint firstItem="AYt-au-Fii" firstAttribute="trailing" secondItem="YuZ-55-GGL" secondAttribute="trailing" id="uHN-p7-4iq"/>
-                            <constraint firstAttribute="bottom" secondItem="TaO-ku-oAw" secondAttribute="bottom" id="wB1-VR-Y30"/>
+                            <constraint firstItem="TaO-ku-oAw" firstAttribute="top" secondItem="40n-92-2Qv" secondAttribute="bottom" constant="8" id="2Gc-eO-Stq"/>
+                            <constraint firstAttribute="bottom" secondItem="TaO-ku-oAw" secondAttribute="bottom" id="9Zt-3s-mXI"/>
+                            <constraint firstItem="TaO-ku-oAw" firstAttribute="leading" secondItem="YuZ-55-GGL" secondAttribute="leading" id="Acw-aR-XOr"/>
+                            <constraint firstItem="FH4-2J-X2i" firstAttribute="leading" secondItem="YuZ-55-GGL" secondAttribute="leading" id="Gfu-R4-rMG"/>
+                            <constraint firstItem="FH4-2J-X2i" firstAttribute="top" secondItem="40n-92-2Qv" secondAttribute="bottom" constant="8" id="Lc7-Gt-P2R"/>
+                            <constraint firstItem="DaL-Wn-5FJ" firstAttribute="top" secondItem="YuZ-55-GGL" secondAttribute="top" constant="8" id="PQY-cA-fIM"/>
+                            <constraint firstItem="DaL-Wn-5FJ" firstAttribute="leading" secondItem="YuZ-55-GGL" secondAttribute="leading" constant="10" id="RuB-qh-plu"/>
+                            <constraint firstItem="40n-92-2Qv" firstAttribute="centerY" secondItem="DaL-Wn-5FJ" secondAttribute="centerY" id="S4K-9g-ktz"/>
+                            <constraint firstItem="40n-92-2Qv" firstAttribute="leading" secondItem="DaL-Wn-5FJ" secondAttribute="trailing" constant="10" id="SfX-ib-3rn"/>
+                            <constraint firstItem="TaO-ku-oAw" firstAttribute="trailing" secondItem="YuZ-55-GGL" secondAttribute="trailing" id="biJ-YO-xNh"/>
+                            <constraint firstItem="YuZ-55-GGL" firstAttribute="trailing" secondItem="40n-92-2Qv" secondAttribute="trailing" constant="15" id="jwC-ND-4Vp"/>
+                            <constraint firstItem="FH4-2J-X2i" firstAttribute="trailing" secondItem="YuZ-55-GGL" secondAttribute="trailing" id="mmr-3N-LJZ"/>
+                            <constraint firstAttribute="bottom" secondItem="FH4-2J-X2i" secondAttribute="bottom" id="y0A-zY-5Y0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YuZ-55-GGL"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="Oy4-7b-yTY">
+                        <barButtonItem key="leftBarButtonItem" title="80302" style="plain" id="HfB-vd-SZk">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sjK-Bb-azd">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="80302       "/>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Map" id="s1A-oX-fLx">
                             <connections>
                                 <action selector="tableTheMap:" destination="ViD-fg-RkL" id="doc-33-Gpg"/>
@@ -1399,9 +1419,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapListbutton" destination="s1A-oX-fLx" id="rGV-At-iYJ"/>
-                        <outlet property="mapView" destination="AYt-au-Fii" id="AVc-7Z-GTe"/>
+                        <outlet property="mapView" destination="FH4-2J-X2i" id="f7o-1o-FUs"/>
+                        <outlet property="searchButton" destination="DaL-Wn-5FJ" id="Ylc-cZ-CY9"/>
                         <outlet property="searchDisplayController" destination="bCR-CB-c6X" id="lG2-qd-XRc"/>
-                        <outlet property="searchbar" destination="YbB-is-90A" id="XaJ-3s-xLh"/>
+                        <outlet property="searchScopeSlider" destination="40n-92-2Qv" id="0d5-xh-r9y"/>
                         <outlet property="tableView" destination="TaO-ku-oAw" id="weg-Wm-TCf"/>
                     </connections>
                 </viewController>
@@ -1409,7 +1430,6 @@
                 <searchDisplayController id="bCR-CB-c6X">
                     <connections>
                         <outlet property="delegate" destination="ViD-fg-RkL" id="oo4-WC-6wd"/>
-                        <outlet property="searchBar" destination="YbB-is-90A" id="T9E-8X-3tC"/>
                         <outlet property="searchContentsController" destination="ViD-fg-RkL" id="P91-c1-qSA"/>
                         <outlet property="searchResultsDataSource" destination="ViD-fg-RkL" id="YbJ-RJ-GQJ"/>
                         <outlet property="searchResultsDelegate" destination="ViD-fg-RkL" id="ecc-qn-Ygg"/>
