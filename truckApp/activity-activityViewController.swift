@@ -13,6 +13,7 @@ import Parse
 class activity_activityViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     
+    @IBOutlet var servingUntilLabel: UILabel!
     
     var locationManager = CLLocationManager()
     var currentLocation = CLLocation()
@@ -77,54 +78,118 @@ class activity_activityViewController: UIViewController, MKMapViewDelegate, UITa
         
         if isActive == false{
             
-            let point = PFGeoPoint(latitude: 1.1, longitude: 1.1)
+            let point = PFGeoPoint(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
             
-            activityStatusButton.title = "Deactivate"
-            self.title = "Active"
+            let truckQuery = PFQuery()
+
+            truckQuery.getObjectWithId(String(describing: PFUser.current()?.value(forKey: "truck")))
             
-            UIView.animate(withDuration: 0.5, animations: { () -> Void in
-                self.tableView.alpha = 1
+            
+            //Present the alert to name your serving location
+            let locationNameAlert = UIAlertController(title: "Name Your Location", message: "Add a location name so people know where to find you.", preferredStyle: .alert)
+            
+            locationNameAlert.addTextField(configurationHandler: { (textField) in
+                textField.placeholder = "Location Name"
             })
             
-            self.mapView.isZoomEnabled = true;
-            self.mapView.isScrollEnabled = true;
-            self.mapView.isUserInteractionEnabled = true;
-            self.tableView.isUserInteractionEnabled = true
-            self.mapView.showsUserLocation = true
-            
-            self.tabBarController?.tabBar.items![0].title = "Active"
-            
-            
-            UIView.animate(withDuration: 0.5, animations: { () -> Void in
-                self.navigationController?.navigationBar.barTintColor = globalConstants.activeGreen
-            })
-            isActive = true
-        }else{
-            isActive = false
-            activityStatusButton.title = "Start Serving"
-            self.title = "Inactive"
-            self.tabBarController?.tabBar.items![0].title = "Inactive"
-            self.tabBarController?.tabBar.items![0].badgeColor = globalConstants.mainOrange
-            
-            UIView.animate(withDuration: 0.5, animations: { () -> Void in
-                self.navigationController?.navigationBar.barTintColor = globalConstants.mainOrange
-            })
-            
-            
-            UIView.animate(withDuration: 0.5, animations: { () -> Void in
-            
-                self.tableView.alpha = 0.2
+            let addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.default, handler: {
+                UIAlertAction in
+                
+                let nameField = locationNameAlert.textFields![0] as UITextField
+                nameField.autocapitalizationType = UITextAutocapitalizationType.words
+                
+                if locationNameAlert.textFields![0].text == ""{
+        
+                }else{
+                    self.title = locationNameAlert.textFields![0].text
+                }
+                
+                self.isActive = true
+                self.activityStatusButton.title = "Deactivate"
+                self.title = "Active"
+                self.tabBarController?.tabBar.items![0].title = "Active"
+
+                
+                UIView.animate(withDuration: 0.5, animations: { () -> Void in
+                    self.navigationController?.navigationBar.barTintColor = globalConstants.activeGreen
+                })
+                
+                
+                UIView.animate(withDuration: 0.5, animations: { () -> Void in
+                    
+                    self.tableView.alpha = 1
+                    
+                })
+                
+                self.tableView.isUserInteractionEnabled = true
+                self.mapView.isZoomEnabled = false;
+                self.mapView.isScrollEnabled = false;
+                self.mapView.isUserInteractionEnabled = false;
+                self.mapView.tintColor = globalConstants.activeGreen
+                
+                self.mapView.showsUserLocation = true
                 
             })
             
-            self.tableView.isUserInteractionEnabled = false
-            self.mapView.isZoomEnabled = false;
-            self.mapView.isScrollEnabled = false;
-            self.mapView.isUserInteractionEnabled = false;
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {
+                UIAlertAction in
+                
+                self.dismiss(animated: true, completion: nil)
+            })
             
-            self.mapView.showsUserLocation = false
+            
+            locationNameAlert.addAction(cancelAction)
+            locationNameAlert.addAction(addAction)
             
             
+            present(locationNameAlert, animated: true, completion: nil)
+
+            
+        }else{
+            
+            //Present the alert to name your serving location
+            let doneServingAlert = UIAlertController(title: "Are You Sure?", message: "Stop serving and unpublish your current location?", preferredStyle: .alert)
+            
+            let stopServing = UIAlertAction(title: "Stop Serving", style: UIAlertActionStyle.default, handler: {
+                UIAlertAction in
+                
+                
+                self.isActive = false
+                self.activityStatusButton.title = "Start Serving"
+                self.title = "Inactive"
+                self.tabBarController?.tabBar.items![0].title = "Inactive"
+                self.tabBarController?.tabBar.items![0].badgeColor = globalConstants.mainOrange
+                
+                UIView.animate(withDuration: 0.5, animations: { () -> Void in
+                    self.navigationController?.navigationBar.barTintColor = globalConstants.mainOrange
+                })
+                
+                
+                UIView.animate(withDuration: 0.5, animations: { () -> Void in
+                    self.tableView.alpha = 0.2
+                })
+                
+                self.tableView.isUserInteractionEnabled = false
+                self.mapView.isZoomEnabled = true;
+                self.mapView.isScrollEnabled = true;
+                self.mapView.isUserInteractionEnabled = true;
+                self.mapView.tintColor = globalConstants.mainOrange
+                
+            })
+            
+            let cancelAction = UIAlertAction(title: "Nevermind", style: UIAlertActionStyle.default, handler: {
+                UIAlertAction in
+                
+                self.dismiss(animated: true, completion: nil)
+            })
+            
+            
+            
+            doneServingAlert.addAction(cancelAction)
+            doneServingAlert.addAction(stopServing)
+            
+            
+            present(doneServingAlert, animated: true, completion: nil)
             
         }
         

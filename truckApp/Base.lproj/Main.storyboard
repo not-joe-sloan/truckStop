@@ -182,7 +182,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RuM-QB-hOJ">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RuM-QB-hOJ">
                                 <rect key="frame" x="0.0" y="64" width="375" height="377"/>
                                 <color key="tintColor" red="0.61960784313725492" green="0.88627450980392153" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </mapView>
@@ -289,13 +289,6 @@
                                     <outlet property="delegate" destination="Fvf-ja-5hh" id="hlz-lt-X8q"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook-icon-round.png" translatesAutoresizingMaskIntoConstraints="NO" id="eCp-I4-ysV">
-                                <rect key="frame" x="167.5" y="232" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="Km6-te-i8Z"/>
-                                    <constraint firstAttribute="width" secondItem="eCp-I4-ysV" secondAttribute="height" multiplier="1:1" id="gDQ-m4-C3l"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -303,11 +296,9 @@
                             <constraint firstItem="Ni3-Ry-bKX" firstAttribute="trailing" secondItem="Bwh-Y7-xgm" secondAttribute="trailing" id="8Md-m5-1Te"/>
                             <constraint firstItem="Ni3-Ry-bKX" firstAttribute="top" secondItem="RuM-QB-hOJ" secondAttribute="bottom" id="EcJ-9C-Pos"/>
                             <constraint firstItem="RuM-QB-hOJ" firstAttribute="leading" secondItem="Bwh-Y7-xgm" secondAttribute="leading" id="JJf-j3-h9C"/>
-                            <constraint firstItem="eCp-I4-ysV" firstAttribute="centerX" secondItem="RuM-QB-hOJ" secondAttribute="centerX" id="UeU-hW-Ur8"/>
                             <constraint firstItem="Ni3-Ry-bKX" firstAttribute="leading" secondItem="Bwh-Y7-xgm" secondAttribute="leading" id="h20-p2-KI4"/>
                             <constraint firstItem="RuM-QB-hOJ" firstAttribute="top" secondItem="Bwh-Y7-xgm" secondAttribute="top" id="rxm-Wi-BC5"/>
                             <constraint firstItem="Ni3-Ry-bKX" firstAttribute="bottom" secondItem="Bwh-Y7-xgm" secondAttribute="bottom" id="xbo-Dz-abm"/>
-                            <constraint firstItem="eCp-I4-ysV" firstAttribute="centerY" secondItem="RuM-QB-hOJ" secondAttribute="centerY" id="yLn-fF-STa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bwh-Y7-xgm"/>
                     </view>
@@ -1370,7 +1361,7 @@
                                 </prototypes>
                             </tableView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="40n-92-2Qv">
-                                <rect key="frame" x="138" y="71" width="224" height="31"/>
+                                <rect key="frame" x="-2" y="71" width="224" height="31"/>
                                 <color key="minimumTrackTintColor" red="0.52898732386938774" green="0.41692598056394559" blue="0.13246091739999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="maximumTrackTintColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>

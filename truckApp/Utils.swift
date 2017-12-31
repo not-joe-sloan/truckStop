@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Parse
 
 class Utils {
     static func showAlert(vc: UIViewController, title: String, message: String){
@@ -19,9 +20,6 @@ class Utils {
             alert.dismiss(animated: true, completion: nil)
         }))
         vc.present(alert, animated: true, completion: nil)
-        
-        
-        
     }
     
     

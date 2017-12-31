@@ -8,8 +8,10 @@
 import UIKit
 import Parse
 import CoreData
+import CoreLocation
 
 class menu_addItemViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
     
 // MARK: Protocol Conformations
     // The number of columns of data
@@ -173,6 +175,7 @@ class menu_addItemViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         //Connect Data
         
