@@ -8,8 +8,14 @@
 
 import UIKit
 import MapKit
+import Parse
 
-class activity_activityViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class activity_activityViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+    
+    
+    
+    var locationManager = CLLocationManager()
+    var currentLocation = CLLocation()
     
     var isActive = false
 
@@ -17,15 +23,66 @@ class activity_activityViewController: UIViewController, MKMapViewDelegate, UITa
     @IBOutlet var tableView: UITableView!
     
     @IBOutlet var activityStatusButton: UIBarButtonItem!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        
+        self.tabBarController?.tabBar.items![0].badgeColor = globalConstants.mainOrange
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        let imageBox = UIImageView()
+        imageBox.image = UIImage(named: "facebook-icon-round.png")
+        
+        imageBox.center = self.mapView.center
+        view.addSubview(imageBox)
+
+        // Do any additional setup after loading the view.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let userLocation: CLLocation = locations[0]
+        self.currentLocation = userLocation
+        //Set a center Point
+        let latitude: CLLocationDegrees = userLocation.coordinate.latitude
+        let longitude: CLLocationDegrees = userLocation.coordinate.longitude
+        
+        //Set a zoom level
+        let latDelta: CLLocationDegrees = 0.05
+        let lonDelta: CLLocationDegrees = 0.05
+        
+        //Create the components for a region - your centerpoint and your zoom level
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
+        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        
+        //Combine components into an actual region
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        
+        //Display our region on the map
+        mapView.setRegion(region, animated: true)
+        
+    }
+    
     @IBAction func changeActivityStatus(_ sender: Any) {
         
         if isActive == false{
+            
+            let point = PFGeoPoint(latitude: 1.1, longitude: 1.1)
             
             activityStatusButton.title = "Deactivate"
             self.title = "Active"
             
             UIView.animate(withDuration: 0.5, animations: { () -> Void in
-                self.mapView.alpha = 1
                 self.tableView.alpha = 1
             })
             
@@ -33,6 +90,7 @@ class activity_activityViewController: UIViewController, MKMapViewDelegate, UITa
             self.mapView.isScrollEnabled = true;
             self.mapView.isUserInteractionEnabled = true;
             self.tableView.isUserInteractionEnabled = true
+            self.mapView.showsUserLocation = true
             
             self.tabBarController?.tabBar.items![0].title = "Active"
             
@@ -54,8 +112,9 @@ class activity_activityViewController: UIViewController, MKMapViewDelegate, UITa
             
             
             UIView.animate(withDuration: 0.5, animations: { () -> Void in
-                self.mapView.alpha = 0.2
+            
                 self.tableView.alpha = 0.2
+                
             })
             
             self.tableView.isUserInteractionEnabled = false
@@ -63,22 +122,14 @@ class activity_activityViewController: UIViewController, MKMapViewDelegate, UITa
             self.mapView.isScrollEnabled = false;
             self.mapView.isUserInteractionEnabled = false;
             
+            self.mapView.showsUserLocation = false
+            
+            
             
         }
         
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.tabBarController?.tabBar.items![0].badgeColor = globalConstants.mainOrange
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
     
      func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

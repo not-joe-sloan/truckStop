@@ -9,20 +9,207 @@
 import UIKit
 import MapKit
 
-class search__mainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
+class search__mainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, CLLocationManagerDelegate {
     
+    
+    
+    var locationManager = CLLocationManager()
+    var currentLocation = CLLocation()
+    
+    
+    @IBOutlet var zipButton: UIBarButtonItem!
+    @IBAction func zip(_ sender: Any) {
+        let zipAlert = UIAlertController(title: "Change Zip", message: "Enter a zip to search in.", preferredStyle: .alert)
+        
+        zipAlert.addTextField { (textField) in
+            
+            textField.placeholder = "Enter a zip"
+        }
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            
+            let zipField = zipAlert.textFields![0] as UITextField
+            zipField.keyboardType = UIKeyboardType.numbersAndPunctuation
+            
+            if zipAlert.textFields![0].text == ""{
+                
+            }else{
+                
+                self.searchButton.alpha = 0.6
+                
+                let address = zipField.text
+                
+                let geoCoder = CLGeocoder()
+                geoCoder.geocodeAddressString(address!) { (placemarks, error) in
+                    guard
+                        let placemarks = placemarks,
+                        let location = placemarks.first?.location
+                        else {
+                            // handle no location found
+                            return
+                    }
+                    
+                    //Set a center Point
+                    let latitude: CLLocationDegrees = location.coordinate.latitude
+                    let longitude: CLLocationDegrees = location.coordinate.longitude
+                    
+                    //Set a zoom level
+                    let latDelta: CLLocationDegrees = (Double(self.searchScopeSlider.value)/100)
+                    let lonDelta: CLLocationDegrees = (Double(self.searchScopeSlider.value)/100)
+                    
+                    //Create the components for a region - your centerpoint and your zoom level
+                    let span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
+                    
+                    let loocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+                    
+                    //Combine components into an actual region
+                    let region: MKCoordinateRegion = MKCoordinateRegionMake(loocation, span)
+                    
+                    //Display our region on the map
+                    self.mapView.setRegion(region, animated: true)
+                    
+                    // Use your location
+                }
+                self.zipButton.title = "in " + zipField.text!
+            }
+        }
+        
+        zipAlert.addAction(okAction)
+        
+        self.present(zipAlert, animated: true, completion: nil)
+    }
     
     
     @IBOutlet var searchButton: UIButton!
     @IBOutlet var searchScopeSlider: UISlider!
+    var spanDeltaVal = Double()
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var mapListbutton: UIBarButtonItem!
     
+    func changeZip(){
+        
+        
+        
+    }
+    
+    
     @IBOutlet var mapView: MKMapView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        
+        self.spanDeltaVal = (Double(searchScopeSlider.value)/100)
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        mapView.showsUserLocation = true
+        
+        
+        searchButton.alpha = 0.6
+        searchScopeSlider.isContinuous = false
+        
+        
+        
+        
+ 
+         
+        
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+        let userLocation: CLLocation = locations[0]
+        self.currentLocation = userLocation
+        //Set a center Point
+        let latitude: CLLocationDegrees = userLocation.coordinate.latitude
+        let longitude: CLLocationDegrees = userLocation.coordinate.longitude
+        
+        //Set a zoom level
+        let latDelta: CLLocationDegrees = 0.05
+        let lonDelta: CLLocationDegrees = 0.05
+        
+        //Create the components for a region - your centerpoint and your zoom level
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
+        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        
+        //Combine components into an actual region
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        
+        //Display our region on the map
+        mapView.setRegion(region, animated: true)
+        
+    }
+    
+    
+    func getZip() -> String {
+        
+        var postalCode = String()
+        
+        CLGeocoder().reverseGeocodeLocation(currentLocation, completionHandler: {(placemarks, error) -> Void in
+            
+            if error != nil {
+                print("Reverse geocoder failed with error" + (error?.localizedDescription)!)
+                return
+            }
+            
+            if placemarks?.count != 0 {
+                let pm = placemarks![0]
+                print(pm.postalCode!)
+                postalCode = pm.postalCode! as String
+            }
+            else {
+                print("Problem with the data received from geocoder")
+            }
+        })
+        
+        return postalCode
+    }
+    
     
     @IBAction func searchWasPressed(_ sender: Any) {
         searchButton.alpha = 0.6
+        
+        let address = "91902"
+        
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            guard
+                let placemarks = placemarks,
+                let location = placemarks.first?.location
+                else {
+                    // handle no location found
+                    return
+            }
+            
+            //Set a center Point
+            let latitude: CLLocationDegrees = location.coordinate.latitude
+            let longitude: CLLocationDegrees = location.coordinate.longitude
+            
+            //Set a zoom level
+            let latDelta: CLLocationDegrees = (Double(self.searchScopeSlider.value)/100)
+            let lonDelta: CLLocationDegrees = (Double(self.searchScopeSlider.value)/100)
+            
+            //Create the components for a region - your centerpoint and your zoom level
+            let span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
+            
+            let loocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+            
+            //Combine components into an actual region
+            let region: MKCoordinateRegion = MKCoordinateRegionMake(loocation, span)
+            
+            //Display our region on the map
+            self.mapView.setRegion(region, animated: true)
+            
+            // Use your location
+        }
         
     }
     
@@ -38,9 +225,10 @@ class search__mainViewController: UIViewController, UITableViewDelegate, UITable
         
        searchButton.alpha = 1
         
+
         //Set a center Point
-        let latitude: CLLocationDegrees = 40.018888
-        let longitude: CLLocationDegrees = -105.275319
+        let latitude: CLLocationDegrees = currentLocation.coordinate.latitude
+        let longitude: CLLocationDegrees = currentLocation.coordinate.longitude
         
         //Set a zoom level
         let latDelta: CLLocationDegrees = (Double(searchScopeSlider.value)/100)
@@ -63,6 +251,8 @@ class search__mainViewController: UIViewController, UITableViewDelegate, UITable
     var isListView = true
     
     func tableTheMap(){
+        
+        print("Test")
         
         if isListView {
             
@@ -92,34 +282,6 @@ class search__mainViewController: UIViewController, UITableViewDelegate, UITable
         tableTheMap()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        searchButton.alpha = 0.6
-        searchScopeSlider.isContinuous = false
-        
-        //Set a center Point
-        let latitude: CLLocationDegrees = 40.018888
-        let longitude: CLLocationDegrees = -105.275319
-        
-        //Set a zoom level
-        let latDelta: CLLocationDegrees = 0.05
-        let lonDelta: CLLocationDegrees = 0.05
-        
-        //Create the components for a region - your centerpoint and your zoom level
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
-
-        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-        
-        //Combine components into an actual region
-        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
-        
-        //Display our region on the map
-        mapView.setRegion(region, animated: true)
-
-
-        // Do any additional setup after loading the view.
-    }
     
     
 // MARK: - Table view data source

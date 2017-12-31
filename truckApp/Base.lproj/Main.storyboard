@@ -182,16 +182,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.20000000000000001" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RuM-QB-hOJ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="375"/>
-                                <color key="tintColor" red="0.51458864795918369" green="0.0067252618310000003" blue="0.244140625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="RuM-QB-hOJ" secondAttribute="height" multiplier="1:1" id="4l4-DX-RdK"/>
-                                </constraints>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RuM-QB-hOJ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="377"/>
+                                <color key="tintColor" red="0.61960784313725492" green="0.88627450980392153" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </mapView>
                             <tableView clipsSubviews="YES" alpha="0.20000000000000001" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ni3-Ry-bKX">
-                                <rect key="frame" x="0.0" y="439" width="375" height="179"/>
+                                <rect key="frame" x="0.0" y="441" width="375" height="177"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="177" id="ymr-F6-jjK"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="timeCell" rowHeight="93" id="V1q-jE-gXq" customClass="activity_timeCell" customModule="truckApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="93"/>
@@ -230,9 +230,6 @@
                                                 <constraint firstItem="1d7-0Q-8rP" firstAttribute="top" secondItem="HOE-69-XKi" secondAttribute="topMargin" constant="15" id="oxa-pT-7x0"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstItem="1d7-0Q-8rP" firstAttribute="centerY" secondItem="V1q-jE-gXq" secondAttribute="centerY" id="KbM-E2-kbI"/>
-                                        </constraints>
                                         <connections>
                                             <segue destination="GFR-We-l2C" kind="show" id="Nn5-Kn-l7l"/>
                                         </connections>
@@ -292,16 +289,25 @@
                                     <outlet property="delegate" destination="Fvf-ja-5hh" id="hlz-lt-X8q"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook-icon-round.png" translatesAutoresizingMaskIntoConstraints="NO" id="eCp-I4-ysV">
+                                <rect key="frame" x="167.5" y="232" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Km6-te-i8Z"/>
+                                    <constraint firstAttribute="width" secondItem="eCp-I4-ysV" secondAttribute="height" multiplier="1:1" id="gDQ-m4-C3l"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="RuM-QB-hOJ" firstAttribute="trailing" secondItem="Bwh-Y7-xgm" secondAttribute="trailing" id="25V-3P-sen"/>
-                            <constraint firstItem="Ni3-Ry-bKX" firstAttribute="leading" secondItem="Bwh-Y7-xgm" secondAttribute="leading" id="80M-Cz-XmG"/>
-                            <constraint firstItem="RuM-QB-hOJ" firstAttribute="top" secondItem="Bwh-Y7-xgm" secondAttribute="top" id="ADo-9E-d7Y"/>
-                            <constraint firstItem="Ni3-Ry-bKX" firstAttribute="trailing" secondItem="Bwh-Y7-xgm" secondAttribute="trailing" id="JRn-nu-JLL"/>
-                            <constraint firstItem="Ni3-Ry-bKX" firstAttribute="top" secondItem="RuM-QB-hOJ" secondAttribute="bottom" id="LBi-V5-e2p"/>
-                            <constraint firstItem="RuM-QB-hOJ" firstAttribute="leading" secondItem="Bwh-Y7-xgm" secondAttribute="leading" id="ScU-ty-QrX"/>
-                            <constraint firstItem="Ni3-Ry-bKX" firstAttribute="bottom" secondItem="Bwh-Y7-xgm" secondAttribute="bottom" id="WVM-fF-9TR"/>
+                            <constraint firstItem="RuM-QB-hOJ" firstAttribute="trailing" secondItem="Bwh-Y7-xgm" secondAttribute="trailing" id="4Ki-uf-AI7"/>
+                            <constraint firstItem="Ni3-Ry-bKX" firstAttribute="trailing" secondItem="Bwh-Y7-xgm" secondAttribute="trailing" id="8Md-m5-1Te"/>
+                            <constraint firstItem="Ni3-Ry-bKX" firstAttribute="top" secondItem="RuM-QB-hOJ" secondAttribute="bottom" id="EcJ-9C-Pos"/>
+                            <constraint firstItem="RuM-QB-hOJ" firstAttribute="leading" secondItem="Bwh-Y7-xgm" secondAttribute="leading" id="JJf-j3-h9C"/>
+                            <constraint firstItem="eCp-I4-ysV" firstAttribute="centerX" secondItem="RuM-QB-hOJ" secondAttribute="centerX" id="UeU-hW-Ur8"/>
+                            <constraint firstItem="Ni3-Ry-bKX" firstAttribute="leading" secondItem="Bwh-Y7-xgm" secondAttribute="leading" id="h20-p2-KI4"/>
+                            <constraint firstItem="RuM-QB-hOJ" firstAttribute="top" secondItem="Bwh-Y7-xgm" secondAttribute="top" id="rxm-Wi-BC5"/>
+                            <constraint firstItem="Ni3-Ry-bKX" firstAttribute="bottom" secondItem="Bwh-Y7-xgm" secondAttribute="bottom" id="xbo-Dz-abm"/>
+                            <constraint firstItem="eCp-I4-ysV" firstAttribute="centerY" secondItem="RuM-QB-hOJ" secondAttribute="centerY" id="yLn-fF-STa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bwh-Y7-xgm"/>
                     </view>
@@ -1404,12 +1410,10 @@
                         <viewLayoutGuide key="safeArea" id="YuZ-55-GGL"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="Oy4-7b-yTY">
-                        <barButtonItem key="leftBarButtonItem" title="80302" style="plain" id="HfB-vd-SZk">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sjK-Bb-azd">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="80302       "/>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" title="80301" id="1bB-dc-CU1">
+                            <connections>
+                                <action selector="zip:" destination="ViD-fg-RkL" id="mJk-SA-rj3"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Map" id="s1A-oX-fLx">
                             <connections>
@@ -1424,6 +1428,7 @@
                         <outlet property="searchDisplayController" destination="bCR-CB-c6X" id="lG2-qd-XRc"/>
                         <outlet property="searchScopeSlider" destination="40n-92-2Qv" id="0d5-xh-r9y"/>
                         <outlet property="tableView" destination="TaO-ku-oAw" id="weg-Wm-TCf"/>
+                        <outlet property="zipButton" destination="1bB-dc-CU1" id="HfX-54-Zdj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FLb-gZ-944" userLabel="First Responder" sceneMemberID="firstResponder"/>
