@@ -11,10 +11,13 @@ import Parse
 
 class loginViewController: UIViewController {
 
-    @IBOutlet var nameField: UITextField!
-    @IBOutlet var passField: UITextField!
+
+    @IBAction func signInPressed(_ sender: Any) {
+        
+    }
     @IBAction func signupPressed(_ sender: Any) {
         
+        /*
         if nameField.text != "" && nameField.text != nil {
             if passField.text != "" && passField.text != nil {
 
@@ -36,10 +39,13 @@ class loginViewController: UIViewController {
                 
             }
         }
+        */
         
     }
     
     @IBAction func truckSignupPressed(_ sender: Any) {
+        
+        /*
         if nameField.text != "" && nameField.text != nil {
             if passField.text != "" && passField.text != nil {
                 
@@ -91,6 +97,7 @@ class loginViewController: UIViewController {
                 
             }
         }
+         */
     }
     
     

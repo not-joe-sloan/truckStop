@@ -47,6 +47,7 @@
 		15AD40991FE76ED300A9C78A /* truckLoginPartOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD40981FE76ED300A9C78A /* truckLoginPartOne.swift */; };
 		15AD409B1FE7714300A9C78A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AD409A1FE7714300A9C78A /* Utils.swift */; };
 		15BA02751FF99D4D00FC88CF /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BA02741FF99D4D00FC88CF /* LocationService.swift */; };
+		15E2F97E2005BFDC00475011 /* signInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E2F97D2005BFDC00475011 /* signInViewController.swift */; };
 		47F8E197277127A764161EEC /* Pods_truckApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAED0E13C6CE598CC34CED9F /* Pods_truckApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +115,7 @@
 		15AD40981FE76ED300A9C78A /* truckLoginPartOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = truckLoginPartOne.swift; sourceTree = "<group>"; };
 		15AD409A1FE7714300A9C78A /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		15BA02741FF99D4D00FC88CF /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationService.swift; path = /Users/JoeSloan/Documents/Truckstop/Development/truckApp/LocationService.swift; sourceTree = "<absolute>"; };
+		15E2F97D2005BFDC00475011 /* signInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signInViewController.swift; sourceTree = "<group>"; };
 		2A568008C383C15CB21BE673 /* Pods-truckApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-truckApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-truckApp/Pods-truckApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B2448EAC142ED71D1BCADBE0 /* Pods-truckApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-truckApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-truckApp/Pods-truckApp.release.xcconfig"; sourceTree = "<group>"; };
 		BAED0E13C6CE598CC34CED9F /* Pods_truckApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_truckApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +184,7 @@
 				157DACA01FEF17F00021312B /* menu-addItemViewController.swift */,
 				154A4DBE1FF30F4000CAD649 /* menu-truckMenuTableViewController.swift */,
 				154A18AA1FE741C700F8A365 /* nearbyTrucksViewController.swift */,
+				15E2F97D2005BFDC00475011 /* signInViewController.swift */,
 				154A4DC81FF4374900CAD649 /* search-mainViewController.swift */,
 				158690871FEA038F008E6686 /* settings-truckNameViewController.swift */,
 				1589AFC01FEE177900BF74D4 /* settings-truckDescriptionViewController.swift */,
@@ -504,6 +507,7 @@
 				154A18DC1FE7540C00F8A365 /* User.swift in Sources */,
 				15AD40991FE76ED300A9C78A /* truckLoginPartOne.swift in Sources */,
 				158690861FE9F593008E6686 /* truckSettingsTableViewController.swift in Sources */,
+				15E2F97E2005BFDC00475011 /* signInViewController.swift in Sources */,
 				154A18DA1FE7540600F8A365 /* Truck.swift in Sources */,
 				1589AFBB1FEE172E00BF74D4 /* settings-truckWebsiteViewController.swift in Sources */,
 				1589AFBD1FEE174200BF74D4 /* settings-truckPhoneViewController.swift in Sources */,
