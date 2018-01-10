@@ -126,7 +126,7 @@ typedef BOOL (^PFSubQueryMatcherBlock)(id object, NSArray *results);
                     return [self valueForContainer:restFormat key:rest depth:depth + 1];
                 }
             }
-            [NSException raise:NSInvalidArgumentException format:@"Key %@ is invalid", key];
+            PFParameterAssertionFailure(@"Key %@ is invalid.", key);
         }
         return [self valueForContainer:value key:rest depth:depth + 1];
     }
@@ -145,14 +145,14 @@ typedef BOOL (^PFSubQueryMatcherBlock)(id object, NSArray *results);
         } else if ([key isEqualToString:@"updatedAt"] || [key isEqualToString:@"_updated_at"]) {
             return object.updatedAt;
         } else {
-            return object[key];
+            return key ? object[key] : nil;
         }
     } else if ([container isKindOfClass:[NSDictionary class]]) {
         return ((NSDictionary *)container)[key];
     } else if (container == nil) {
         return nil;
     } else {
-        [NSException raise:NSInvalidArgumentException format:@"Bad key %@", key];
+        PFParameterAssertionFailure(@"Bad key %@", key);
         // Shouldn't reach here.
         return nil;
     }
@@ -457,9 +457,7 @@ greaterThanOrEqualTo:(id)constraint {
     } else if ([operator isEqualToString:PFQueryKeyWithin]) {
         return [self matchesValue:value within:constraint];
     }
-
-    [NSException raise:NSInvalidArgumentException
-                format:@"The offline store does not yet support %@ operator.", operator];
+    PFParameterAssertionFailure(@"Local Datastore does not yet support %@ operator.", operator);
     // Shouldn't reach here
     return YES;
 }
@@ -710,10 +708,9 @@ greaterThanOrEqualTo:(id)constraint {
             // throwing an exception.
             return nil;
         }
-        NSException *exception = [NSException exceptionWithName:NSInternalInconsistencyException
-                                                         reason:@"include is invalid"
-                                                       userInfo:nil];
-        return [BFTask taskWithException:exception];
+        NSError *error = [PFErrorUtilities errorWithCode:kPFErrorInvalidNestedKey
+                                                 message:@"include is invalid"];
+        return [BFTask taskWithError:error];
     }] continueWithSuccessBlock:^id(BFTask *task) {
         return [self fetchIncludeAsync:rest container:task.result database:database];
     }];

@@ -33,18 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 
 /**
- Constructs an object of the most specific class known to implement `+parseClassName`.
-
- This method takes care to help `PFObject` subclasses be subclassed themselves.
- For example, `PFUser.+object` returns a `PFUser` by default but will return an
- object of a registered subclass instead if one is known.
- A default implementation is provided by `PFObject` which should always be sufficient.
-
- @return Returns the object that is instantiated.
- */
-+ (instancetype)object;
-
-/**
  Creates a reference to an existing PFObject for use in creating associations between PFObjects.
 
  Calling `PFObject.dataAvailable` on this object will return `NO`
@@ -55,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return A new `PFObject` without data.
  */
-+ (instancetype)objectWithoutDataWithObjectId:(nullable NSString *)objectId;
++ (instancetype)objectWithoutDataWithObjectId:(nullable NSString *)objectId PF_SWIFT_UNAVAILABLE;
 
 /**
  Create a query which returns objects of this type.

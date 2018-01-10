@@ -82,7 +82,7 @@ class activity_activityViewController: UIViewController, MKMapViewDelegate, UITa
             
             let truckQuery = PFQuery()
 
-            truckQuery.getObjectWithId(String(describing: PFUser.current()?.value(forKey: "truck")))
+            //truckQuery.getObjectWithId(String(describing: PFUser.current()?.value(forKey: "truck")))
             
             
             //Present the alert to name your serving location

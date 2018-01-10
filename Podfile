@@ -9,5 +9,7 @@ target 'truckApp' do
   # Pods for truckApp
 
   pod 'Parse'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
 
 end

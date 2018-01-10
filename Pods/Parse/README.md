@@ -14,29 +14,31 @@
 [![Join Chat][gitter-svg]][gitter-link]
 
 A library that gives you access to the powerful Parse cloud platform from your iOS or OS X app.
-For more information Parse and its features, see [the website][parse.com] and [getting started][docs].
+For more information about Parse and its features, see [the blog][blog] and public [documentation][docs].
 
 ## Getting Started
 
 To use parse, head on over to the [releases][releases] page, and download the latest build.
-And you're off! Take a look at the public [documentation][docs] and start building.
+And you're off!. Take a look at the public [documentation][docs] & [API][api] and start building.
+
+Notice the API docs aren't totally up to date when it comes to latest Swift signature of the methods and more importantly regarding [Push Notifications](http://blog.parse.com/learn/engineering/the-dangerous-world-of-client-push/) which are **no longer supported by Parse server**, keep an eye on [its repo](https://github.com/ParsePlatform/parse-server)
 
 **Other Installation Options**
 
  - **[CocoaPods](https://cocoapods.org)**
- 
+
    Add the following line to your Podfile:
    ```ruby
    pod 'Parse'
    ```
    Run `pod install`, and you should now have the latest parse release.
-    
-    
+
+
  - **[Carthage](https://github.com/carthage/carthage)**
- 
+
    Add the following line to your Cartfile:
    ```
-   github "ParsePlatform/Parse-SDK-iOS-OSX"
+   github "parse-community/Parse-SDK-iOS-OSX"
    ```
    Run `carthage update`, and you should now have the latest version of Parse SDK in your Carthage folder.
 
@@ -47,11 +49,14 @@ And you're off! Take a look at the public [documentation][docs] and start buildi
         # To pull in extra dependencies (Bolts and OCMock)
         git submodule update --init --recursive
 
-        # To install all the gems
+        # To install bundler
+        gem install bundler
+
+        # To install all the gems via bundler
         bundle install
 
         # Build & Package the Frameworks
-        rake package:frameworks
+        bundle exec rake package:frameworks
 
     Compiled frameworks will be in 2 archives: `Parse-iOS.zip` and `Parse-OSX.zip` inside the `build/release` folder, and you can link them as you'd please.
 
@@ -62,6 +67,18 @@ And you're off! Take a look at the public [documentation][docs] and start buildi
 ## How Do I Contribute?
 
 We want to make contributing to this project as easy and transparent as possible. Please refer to the [Contribution Guidelines][contributing].
+
+## Preparing for a new release
+
+### Update the version number
+
+You can use the rake task in order to bump the version number, it's safe, and will properly update all version numbers
+
+```
+$ bundle exec rake package:set_version[X.X.X]
+```
+
+Replace X.X.X by the version number and push to the repository.
 
 ## Dependencies
 
@@ -87,39 +104,41 @@ LICENSE file in the root directory of this source tree. An additional grant
 of patent rights can be found in the PATENTS file in the same directory.
 ```
 
- [parse.com]: https://www.parse.com/products/ios
- [docs]: https://www.parse.com/docs/ios/guide
- [blog]: https://blog.parse.com/
+As of April 5, 2017, Parse, LLC has transferred this code to the parse-community organization, and will no longer be contributing to or distributing this code.
 
- [parseui-link]: https://github.com/ParsePlatform/ParseUI-iOS
- [parsefacebookutils-link]: https://github.com/ParsePlatform/ParseFacebookUtils-iOS
- [parsetwitterutils-link]: https://github.com/ParsePlatform/ParseTwitterUtils-iOS
+ [docs]: http://docs.parseplatform.org/ios/guide/
+ [blog]: http://blog.parse.com/
+ [api]: http://parseplatform.org/Parse-SDK-iOS-OSX/api/
 
- [releases]: https://github.com/ParsePlatform/Parse-SDK-iOS-OSX/releases
- [contributing]: https://github.com/ParsePlatform/Parse-SDK-iOS-OSX/blob/master/CONTRIBUTING.md
+ [parseui-link]: https://github.com/parse-community/ParseUI-iOS
+ [parsefacebookutils-link]: https://github.com/parse-community/ParseFacebookUtils-iOS
+ [parsetwitterutils-link]: https://github.com/parse-community/ParseTwitterUtils-iOS
+
+ [releases]: https://github.com/parse-community/Parse-SDK-iOS-OSX/releases
+ [contributing]: https://github.com/parse-community/Parse-SDK-iOS-OSX/blob/master/CONTRIBUTING.md
 
  [bolts-framework]: https://github.com/BoltsFramework/Bolts-ObjC
  [ocmock-framework]: http://ocmock.org
 
- [build-status-svg]: https://img.shields.io/travis/ParsePlatform/Parse-SDK-iOS-OSX/master.svg
- [build-status-link]: https://travis-ci.org/ParsePlatform/Parse-SDK-iOS-OSX/branches
+ [build-status-svg]: https://img.shields.io/travis/parse-community/Parse-SDK-iOS-OSX/master.svg
+ [build-status-link]: https://travis-ci.org/parse-community/Parse-SDK-iOS-OSX/branches
 
- [coverage-status-svg]: https://img.shields.io/codecov/c/github/ParsePlatform/Parse-SDK-iOS-OSX/master.svg
- [coverage-status-link]: https://codecov.io/github/ParsePlatform/Parse-SDK-iOS-OSX?branch=master
+ [coverage-status-svg]: https://img.shields.io/codecov/c/github/parse-community/Parse-SDK-iOS-OSX/master.svg
+ [coverage-status-link]: https://codecov.io/github/parse-community/Parse-SDK-iOS-OSX?branch=master
 
  [license-svg]: https://img.shields.io/badge/license-BSD-lightgrey.svg
- [license-link]: https://github.com/ParsePlatform/Parse-SDK-iOS-OSX/blob/master/LICENSE
+ [license-link]: https://github.com/parse-community/Parse-SDK-iOS-OSX/blob/master/LICENSE
 
  [podspec-svg]: https://img.shields.io/cocoapods/v/Parse.svg
  [podspec-link]: https://cocoapods.org/pods/Parse
- 
+
  [carthage-svg]: https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat
  [carthage-link]: https://github.com/carthage/carthage
 
  [platforms-svg]: http://img.shields.io/cocoapods/p/Parse.svg?style=flat
 
  [dependencies-svg]: https://img.shields.io/badge/dependencies-2-yellowgreen.svg
- [dependencies-link]: https://github.com/ParsePlatform/Parse-SDK-iOS-OSX/blob/master/Vendor
+ [dependencies-link]: https://github.com/parse-community/Parse-SDK-iOS-OSX/blob/master/Vendor
 
  [references-svg]: https://www.versioneye.com/objective-c/parse/reference_badge.svg
  [references-link]: https://www.versioneye.com/objective-c/parse/references

@@ -217,6 +217,20 @@
     }];
 }
 
+#pragma mark Cache
+
+- (BFTask *)clearCachedDataInBackground {
+    @weakify(self);
+    return [self.taskQueue enqueue:^id(BFTask *_) {
+        @strongify(self);
+        return [[[[self class] fileController] clearFileCacheAsyncForFileWithState:self.state] continueWithSuccessResult:nil];
+    }];
+}
+
++ (BFTask *)clearAllCachedDataInBackground {
+    return [[[self fileController] clearAllFileCacheAsync] continueWithSuccessResult:nil];
+}
+
 ///--------------------------------------
 #pragma mark - Private
 ///--------------------------------------
@@ -396,7 +410,7 @@
 #pragma mark - Staging
 ///--------------------------------------
 
-- (BOOL)_stageWithData:(NSData *)data error:(NSError **)error {
+- (BOOL)_stageWithData:(NSData *)data error:(NSError * __autoreleasing *)error {
     __block BOOL result = NO;
     [self _performDataAccessBlock:^{
         _stagedFilePath = [[[[self class] fileController].fileStagingController stageFileAsyncWithData:data
@@ -409,7 +423,7 @@
     return result;
 }
 
-- (BOOL)_stageWithPath:(NSString *)path error:(NSError **)error {
+- (BOOL)_stageWithPath:(NSString *)path error:(NSError * __autoreleasing *)error {
     __block BOOL result = NO;
     [self _performDataAccessBlock:^{
         _stagedFilePath = [[[[self class] fileController].fileStagingController stageFileAsyncAtPath:path

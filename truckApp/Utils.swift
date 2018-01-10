@@ -21,7 +21,25 @@ class Utils {
         }))
         vc.present(alert, animated: true, completion: nil)
     }
+    /*
+    static func getTruck(id: String) -> Truck {
+
+        let truckQuery = PFQuery(className: "Truck")
+        truckQuery.getFirstObjectInBackground { (truck, error) in
+            if error != nil {
+                
+            }else{
+                let returnTruck = Truck()
+                returnTruck.name = truck!.value(forKey: "name") as? String
+                returnTruck.owner = truck!.value(forKey: "owner") as? String
+                
+                //return returnTruck
+            }
+        }
     
+    }
+ */
     
 }
+
 

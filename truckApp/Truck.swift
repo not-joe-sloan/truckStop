@@ -16,6 +16,7 @@ class Truck: NSObject {
     //Basic Info
     var name: String?
     var city: String?
+    var owner: String?
     var truckDescription: String?
     var email: String?
     var phone: String?

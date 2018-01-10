@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jIa-U6-KRr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UKp-CY-1YO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -402,7 +402,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K9v-uZ-LIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2511.1999999999998" y="4156.3718140929541"/>
+            <point key="canvasLocation" x="-2511" y="3971"/>
         </scene>
         <!--Menu-->
         <scene sceneID="PVh-lL-YU6">
@@ -711,7 +711,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Li0-5b-dCV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1394" y="5081"/>
+            <point key="canvasLocation" x="-1767" y="4738"/>
         </scene>
         <!--Settings-->
         <scene sceneID="fEj-9o-Cga">
@@ -1361,7 +1361,7 @@
                                 </prototypes>
                             </tableView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="40n-92-2Qv">
-                                <rect key="frame" x="-2" y="71" width="224" height="31"/>
+                                <rect key="frame" x="138" y="71" width="224" height="31"/>
                                 <color key="minimumTrackTintColor" red="0.52898732386938774" green="0.41692598056394559" blue="0.13246091739999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="maximumTrackTintColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -1647,7 +1647,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gq7-I6-TVV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1582" y="4158"/>
+            <point key="canvasLocation" x="-1767" y="3971"/>
         </scene>
     </scenes>
     <resources>
