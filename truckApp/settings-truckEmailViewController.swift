@@ -21,7 +21,7 @@ class settings_truckEmailViewController: UIViewController {
         
         query.whereKey("owner", equalTo: PFUser.current()?.value(forKey: "objectId") as Any)
         
-        query.getFirstObjectInBackground(block: { (truck, error) in
+        query.getFirstObjectInBckground(block: { (truck, error) in
             
             if truck != nil{
                 
