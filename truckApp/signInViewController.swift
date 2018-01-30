@@ -15,7 +15,7 @@ class signInViewController: UIViewController {
 
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passField: UITextField!
-    @IBAction func signInPressed(_ sender: Any) {
+    /*@IBAction func signInPressed(_ sender: Any) {
         PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
             (user: PFUser?, error: NSError?) -> Void in
             if let user = user {
@@ -29,6 +29,7 @@ class signInViewController: UIViewController {
             }
         }
     }
+ */
     
     
     @objc func loginButtonClicked() {

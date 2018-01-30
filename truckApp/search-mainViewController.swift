@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Parse
 
 class search__mainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate, CLLocationManagerDelegate {
     
@@ -15,6 +16,7 @@ class search__mainViewController: UIViewController, UITableViewDelegate, UITable
     
     var locationManager = CLLocationManager()
     var currentLocation = CLLocation()
+    var placesObjects = [PFObject]()
     
     
     @IBOutlet var zipButton: UIBarButtonItem!
@@ -176,6 +178,23 @@ class search__mainViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBAction func searchWasPressed(_ sender: Any) {
         searchButton.alpha = 0.6
+        
+
+        //User's Location
+        let userGeoPoint = PFUser.current()!["servingLocation"] as! PFGeoPoint
+        print(PFUser.current()!["servingLocation"])
+        //Create a query for Places
+        let query = PFQuery(className: "User")
+        //Interested in locations near user
+        query.whereKey("servingLocation", nearGeoPoint: userGeoPoint)
+        //Limit what could be a lot of points
+        placesObjects = query.findObjects()
+        
+        print(placesObjects)
+
+        
+        
+        
         
         let address = "91902"
         

@@ -78,9 +78,6 @@ class activity_activityViewController: UIViewController, MKMapViewDelegate, UITa
         
         if isActive == false{
             
-            let point = PFGeoPoint(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
-            
-            let truckQuery = PFQuery()
 
             //truckQuery.getObjectWithId(String(describing: PFUser.current()?.value(forKey: "truck")))
             
@@ -104,30 +101,49 @@ class activity_activityViewController: UIViewController, MKMapViewDelegate, UITa
                     self.title = locationNameAlert.textFields![0].text
                 }
                 
-                self.isActive = true
-                self.activityStatusButton.title = "Deactivate"
-                self.title = "Active"
-                self.tabBarController?.tabBar.items![0].title = "Active"
-
+                let point = PFGeoPoint(latitude: self.currentLocation.coordinate.latitude, longitude: self.currentLocation.coordinate.longitude)
                 
-                UIView.animate(withDuration: 0.5, animations: { () -> Void in
-                    self.navigationController?.navigationBar.barTintColor = globalConstants.activeGreen
+                let user = PFUser.current()
+                let locationName = locationNameAlert.textFields![0].text
+                user!["servingLocation"] = point
+            
+                if locationName != nil {
+                    user!["servingLocationName"] = locationName
+                }
+                
+                user?.saveInBackground(block: { (success, error) in
+                    if success{
+                        self.isActive = true
+                        self.activityStatusButton.title = "Deactivate"
+                        self.title = "Active"
+                        self.tabBarController?.tabBar.items![0].title = "Active"
+                        
+                        
+                        UIView.animate(withDuration: 0.5, animations: { () -> Void in
+                            self.navigationController?.navigationBar.barTintColor = globalConstants.activeGreen
+                        })
+                        
+                        
+                        UIView.animate(withDuration: 0.5, animations: { () -> Void in
+                            
+                            self.tableView.alpha = 1
+                            
+                        })
+                        
+                        self.tableView.isUserInteractionEnabled = true
+                        self.mapView.isZoomEnabled = false;
+                        self.mapView.isScrollEnabled = false;
+                        self.mapView.isUserInteractionEnabled = false;
+                        self.mapView.tintColor = globalConstants.activeGreen
+                        
+                        self.mapView.showsUserLocation = true
+                        
+                    }else{
+                        
+                        Utils.showAlert(vc: self, title: "error", message: "Something went wrong publishing the location")
+                        
+                    }
                 })
-                
-                
-                UIView.animate(withDuration: 0.5, animations: { () -> Void in
-                    
-                    self.tableView.alpha = 1
-                    
-                })
-                
-                self.tableView.isUserInteractionEnabled = true
-                self.mapView.isZoomEnabled = false;
-                self.mapView.isScrollEnabled = false;
-                self.mapView.isUserInteractionEnabled = false;
-                self.mapView.tintColor = globalConstants.activeGreen
-                
-                self.mapView.showsUserLocation = true
                 
             })
             
